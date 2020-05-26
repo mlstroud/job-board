@@ -32,5 +32,16 @@ namespace JobBoard.Tests
 
       Assert.AreEqual(title, result);
     }
+
+    [TestMethod]
+    public void GetDescription_ReturnsDescription_String()
+    {
+      string description = "We are looking for a full-stack web developer.";
+      JobOpening newJob = new JobOpening("test", description, "test");
+
+      string result = newJob.Description;
+
+      Assert.AreEqual(description, result);
+    }
   }
 }
