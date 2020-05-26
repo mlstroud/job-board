@@ -16,7 +16,7 @@ namespace JobBoard.Tests
 
     public JobOpeningTests()
     {
-      DBConfiguration.ConnectionString = "sever=localhost;user id=root;password=epicodus;port=3306;database=job_board_test;";
+      DBConfiguration.ConnectionString = "server=localhost;user id=root;password=epicodus;port=3306;database=job_board_test;";
     }
 
     [TestMethod]
