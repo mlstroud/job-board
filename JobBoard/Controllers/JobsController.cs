@@ -22,6 +22,13 @@ namespace JobBoard.Controllers
       return RedirectToAction("Index");
     }
 
+    [HttpGet("/jobs/{id}")]
+    public ActionResult Show(int id)
+    {
+      JobOpening job = JobOpening.Find(id);
+      return View(job);
+    }
+
     [HttpGet("/jobs/new")]
     public ActionResult New()
     {

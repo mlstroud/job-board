@@ -82,6 +82,40 @@ namespace JobBoard.Models
       return allJobs;
     }
 
+    public static JobOpening Find(int id)
+    {
+      MySqlConnection conn = DB.Connection();
+      conn.Open();
+      MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
+      cmd.CommandText = @"SELECT * FROM job_openings WHERE id=@id;";
+
+      MySqlParameter jobId = new MySqlParameter();
+      jobId.ParameterName = "@id";
+      jobId.Value = id;
+      cmd.Parameters.Add(jobId);
+
+      MySqlDataReader rdr = cmd.ExecuteReader() as MySqlDataReader;
+      int readId = 0;
+      string readTitle = "";
+      string readDescription = "";
+      string readContact = "";
+      while (rdr.Read())
+      {
+        readId = rdr.GetInt32(0);
+        readTitle = rdr.GetString(1);
+        readDescription = rdr.GetString(2);
+        readContact = rdr.GetString(3);
+      }
+
+      JobOpening foundJob = new JobOpening(readTitle, readDescription, readContact, readId);
+      conn.Close();
+      if (conn != null)
+      {
+        conn.Dispose();
+      }
+      return foundJob;
+    }
+
     public void Save()
     {
       MySqlConnection conn = DB.Connection();
