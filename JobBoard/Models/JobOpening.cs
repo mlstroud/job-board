@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using MySqlConnection;
+using MySql.Data.MySqlClient;
 
 namespace JobBoard.Models
 {
@@ -41,7 +41,7 @@ namespace JobBoard.Models
       }
     }
 
-    public void ClearAll()
+    public static void ClearAll()
     {
       MySqlConnection conn = DB.Connection();
       conn.Open();
@@ -55,12 +55,12 @@ namespace JobBoard.Models
       }
     }
 
-    public List<JobOpening> GetAll()
+    public static List<JobOpening> GetAll()
     {
       List<JobOpening> allJobs = new List<JobOpening>();
       MySqlConnection conn = DB.Connection();
       conn.Open();
-      MySqlCommand = conn.CreateCommand() as MySqlConnection;
+      MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
       cmd.CommandText = @"SELECT * FROM job_openings";
       MySqlDataReader rdr = cmd.ExecuteReader() as MySqlDataReader;
       while (rdr.Read())
@@ -78,6 +78,8 @@ namespace JobBoard.Models
       {
         conn.Dispose();
       }
+
+      return allJobs;
     }
   }
 }
