@@ -81,5 +81,33 @@ namespace JobBoard.Models
 
       return allJobs;
     }
+
+    public void Save()
+    {
+      MySqlConnection conn = DB.Connection();
+      conn.Open();
+      MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
+      cmd.CommandText = @"INSERT INTO job_openings (title, description, contact) VALUES (@jobTitle, @jobDescription, @jobContact);";
+      MySqlParameter title = new MySqlParameter();
+      title.ParameterName = "@jobTitle";
+      title.Value = this.Title;
+      MySqlParameter description = new MySqlParameter();
+      description.ParameterName = "@jobDescription";
+      description.Value = this.Description;
+      MySqlParameter contact = new MySqlParameter();
+      contact.ParameterName = "@jobContact";
+      contact.Value = this.Contact;
+      cmd.Parameters.Add(title);
+      cmd.Parameters.Add(description);
+      cmd.Parameters.Add(contact);
+      cmd.ExecuteNonQuery();
+      Id = (int)cmd.LastInsertedId;
+
+      conn.Close();
+      if (conn != null)
+      {
+        conn.Dispose();
+      }
+    }
   }
 }
