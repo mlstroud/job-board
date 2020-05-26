@@ -17,9 +17,20 @@ namespace JobBoard.Tests
     [TestMethod]
     public void JobOpeningConstructor_CreatesInstanceOfJobOpening_JobOpening()
     {
-      JobOpening newJob = new JobOpening();
+      JobOpening newJob = new JobOpening("test", "test", "test");
 
       Assert.AreEqual(typeof(JobOpening), newJob.GetType());
+    }
+
+    [TestMethod]
+    public void GetTitle_ReturnsTitle_String()
+    {
+      string title = "Software Developer";
+      JobOpening newJob = new JobOpening(title, "test", "test");
+
+      string result = newJob.Title;
+
+      Assert.AreEqual(title, result);
     }
   }
 }
