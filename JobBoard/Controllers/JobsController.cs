@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using MySql.Data.MySqlClient;
 
 namespace JobBoard.Controllers
 {
@@ -8,6 +9,14 @@ namespace JobBoard.Controllers
     public ActionResult Index()
     {
       return View();
+    }
+
+    [HttpPost("/jobs")]
+    public ActionResult Create(string title, string description, string contact)
+    {
+      JobOpening newJob = new JobOpening(title, description, contact);
+      newJob.Save();
+      return RedirectToAction("Index");
     }
 
     [HttpGet("/jobs/new")]
