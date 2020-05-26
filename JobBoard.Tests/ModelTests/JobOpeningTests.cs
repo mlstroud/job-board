@@ -72,5 +72,15 @@ namespace JobBoard.Tests
 
       Assert.AreNotEqual(firstJob, secondJob);
     }
+
+    [TestMethod]
+    public void GetAll_ReturnsEmptyListFromDatabase_JobOpeningList()
+    {
+      List<JobOpening> newList = new List<JobOpening>();
+
+      List<JobOpening> result = JobOpening.GetAll();
+
+      CollectionAssert.AreEqual(newList, result);
+    }
   }
 }
