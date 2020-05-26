@@ -10,6 +10,7 @@ namespace JobBoard.Models
     public JobOpening(string title, string description, string contact)
     {
       Title = title;
+      Description = description;
     }
   }
 }
