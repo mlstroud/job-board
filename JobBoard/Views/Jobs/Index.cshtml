@@ -1,4 +1,20 @@
+@using JobBoard.Models;
 @{
   Layout = "_Layout";
 }
-Hello Jobs World
+
+
+@foreach(JobOpening job in @Model)
+{
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <div class="panel-title">
+        <strong>@job.Title</strong>
+      </div>
+    </div>
+    <div class="panel-body">
+      <blockquote>@job.Description</blockquote>
+      <p>To apply, contact at @job.Contact</p>
+    </div>
+  </div>
+}
