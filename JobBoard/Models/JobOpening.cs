@@ -46,8 +46,33 @@ namespace JobBoard.Models
       MySqlConnection conn = DB.Connection();
       conn.Open();
       MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
-      cmd.CommandText = @"DELETE FROM items;";
+      cmd.CommandText = @"DELETE FROM job_openings;";
       cmd.ExecuteNonQuery();
+      conn.Close();
+      if (conn != null)
+      {
+        conn.Dispose();
+      }
+    }
+
+    public List<JobOpening> GetAll()
+    {
+      List<JobOpening> allJobs = new List<JobOpening>();
+      MySqlConnection conn = DB.Connection();
+      conn.Open();
+      MySqlCommand = conn.CreateCommand() as MySqlConnection;
+      cmd.CommandText = @"SELECT * FROM job_openings";
+      MySqlDataReader rdr = cmd.ExecuteReader() as MySqlDataReader;
+      while (rdr.Read())
+      {
+        int jobId = rdr.GetInt32(0);
+        string jobTitle = rdr.GetString(1);
+        string jobDescription = rdr.GetString(2);
+        string jobContact = rdr.GetString(3);
+
+        JobOpening job = new JobOpening(jobTitle, jobDescription, jobContact, jobId);
+        allJobs.Add(job);
+      }
       conn.Close();
       if (conn != null)
       {
