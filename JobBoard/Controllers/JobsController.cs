@@ -8,7 +8,8 @@ namespace JobBoard.Controllers
     [HttpGet("/jobs")]
     public ActionResult Index()
     {
-      return View();
+      List<JobOpening> allJobs = JobOpening.GetAll();
+      return View(allJobs);
     }
 
     [HttpPost("/jobs")]
