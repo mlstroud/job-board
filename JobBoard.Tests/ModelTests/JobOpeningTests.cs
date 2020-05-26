@@ -56,12 +56,21 @@ namespace JobBoard.Tests
     }
 
     [TestMethod]
-    public void Equals_Returns_TrueIfPropertiesAreTheSame_True()
+    public void Equals_ReturnsTrueIfPropertiesAreTheSame_True()
     {
       JobOpening firstJob = new JobOpening("SDE", "Full Stack SDE", "abc@company.com");
       JobOpening secondJob = new JobOpening("SDE", "Full Stack SDE", "abc@company.com");
 
       Assert.AreEqual(firstJob, secondJob);
+    }
+
+    [TestMethod]
+    public void Equals_ReturnsFalseIfPropertiesAreDifferent_False()
+    {
+      JobOpening firstJob = new JobOpening("SDE", "Full Stack SDE", "abc@company.com");
+      JobOpening secondJob = new JobOpening("SDE", "Front End SDE", "abc@company.com");
+
+      Assert.AreNotEqual(firstJob, secondJob);
     }
   }
 }
