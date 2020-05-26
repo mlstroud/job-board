@@ -11,6 +11,7 @@ namespace JobBoard.Models
     {
       Title = title;
       Description = description;
+      Contact = contact;
     }
   }
 }

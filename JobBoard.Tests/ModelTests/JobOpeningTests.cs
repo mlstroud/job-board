@@ -43,5 +43,16 @@ namespace JobBoard.Tests
 
       Assert.AreEqual(description, result);
     }
+
+    [TestMethod]
+    public void GetContact_ReturnsContact_String()
+    {
+      string contact = "abc@company.com";
+      JobOpening newJob = new JobOpening("test", "test", contact);
+
+      string result = newJob.Contact;
+
+      Assert.AreEqual(contact, result);
+    }
   }
 }
