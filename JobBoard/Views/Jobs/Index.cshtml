@@ -3,18 +3,33 @@
   Layout = "_Layout";
 }
 
-
-@foreach(JobOpening job in @Model)
-{
-  <div class="panel panel-primary">
-    <div class="panel-heading">
-      <div class="panel-title">
-        <strong>@job.Title</strong>
+<div class="row">
+  <div class="col-md-9">
+    @foreach(JobOpening job in @Model)
+    {
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <div class="panel-title">
+            <strong>@job.Title</strong>
+          </div>
+        </div>
+        <div class="panel-body">
+          <blockquote>@job.Description</blockquote>
+          <p>To apply, contact at @job.Contact</p>
+          <a href='jobs/@job.Id'>
+          <button class="btn btn-primary">View Job</button>
+          </a>
+        </div>
       </div>
-    </div>
-    <div class="panel-body">
-      <blockquote>@job.Description</blockquote>
-      <p>To apply, contact at @job.Contact</p>
-    </div>
+    }
   </div>
-}
+  <div class="col-md-3">
+    <a href="/">
+    <button class="btn btn-primary">Home</button>
+    </a>
+    <br><br>
+    <a href="/jobs/new">
+      <button class="btn btn-success">Add Job</button>
+    </a>
+  </div>
+</div>
