@@ -1,3 +1,6 @@
+using System.Collections.Generic;
+using MySqlConnection;
+
 namespace JobBoard.Models
 {
   public class JobOpening
@@ -35,6 +38,20 @@ namespace JobBoard.Models
         bool descriptionEquality = (this.Description == newJob.Description);
         bool contactEquality = (this.Contact == newJob.Contact);
         return (titleEquality && descriptionEquality && contactEquality);
+      }
+    }
+
+    public void ClearAll()
+    {
+      MySqlConnection conn = DB.Connection();
+      conn.Open();
+      MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
+      cmd.CommandText = @"DELETE FROM items;";
+      cmd.ExecuteNonQuery();
+      conn.Close();
+      if (conn != null)
+      {
+        conn.Dispose();
       }
     }
   }
