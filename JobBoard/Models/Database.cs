@@ -6,9 +6,9 @@ namespace JobBoard.Models
 {
   public class DB
   {
-    public static MysqlConnection Connection()
+    public static MySqlConnection Connection()
     {
-      MysqlConnection conn = new MysqlConnection(DBConfiguration.ConnectionString);
+      MySqlConnection conn = new MySqlConnection(DBConfiguration.ConnectionString);
       return conn;
     }
   }
