@@ -7,8 +7,13 @@ using System.Collections.Generic;
 namespace JobBoard.Tests
 {
   [TestClass]
-  public class JobOpeningTests
+  public class JobOpeningTests : IDisposable
   {
+    public void Dispose()
+    {
+      JobOpening.ClearAll();
+    }
+
     public JobOpeningTests()
     {
       DBConfiguration.ConnectionString = "sever=localhost;user id=root;password=epicodus;port=3306;database=job_board_test;";
