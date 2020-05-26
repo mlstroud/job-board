@@ -13,5 +13,13 @@ namespace JobBoard.Models
       Description = description;
       Contact = contact;
     }
+
+    public JobOpening(string title, string description, string contact, int id)
+    {
+      Title = title;
+      Description = description;
+      Contact = contact;
+      Id = id;
+    }
   }
 }
