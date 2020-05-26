@@ -54,5 +54,14 @@ namespace JobBoard.Tests
 
       Assert.AreEqual(contact, result);
     }
+
+    [TestMethod]
+    public void Equals_Returns_TrueIfPropertiesAreTheSame_True()
+    {
+      JobOpening firstJob = new JobOpening("SDE", "Full Stack SDE", "abc@company.com");
+      JobOpening secondJob = new JobOpening("SDE", "Full Stack SDE", "abc@company.com");
+
+      Assert.AreEqual(firstJob, secondJob);
+    }
   }
 }
