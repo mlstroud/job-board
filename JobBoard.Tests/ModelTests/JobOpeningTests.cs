@@ -87,5 +87,19 @@ namespace JobBoard.Tests
 
       CollectionAssert.AreEqual(newList, result);
     }
+
+    [TestMethod]
+    public void GetAll_ReturnsJobOpenings_JobOpeningList()
+    {
+      JobOpening jobOne = new JobOpening("SDE", "Full Stack SDE", "abc@company.com");
+      jobOne.Save();
+      JobOpening jobTwo = new JobOpening("SDE", "Front End SDE", "abc@company.com");
+      jobTwo.Save();
+      List<JobOpening> jobList = new List<JobOpening> { jobOne, jobTwo };
+
+      List<JobOpening> result = JobOpening.GetAll();
+
+      CollectionAssert.AreEqual(jobList, result);
+    }
   }
 }
