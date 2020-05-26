@@ -21,5 +21,21 @@ namespace JobBoard.Models
       Contact = contact;
       Id = id;
     }
+
+    public override bool Equals(System.Object otherJob)
+    {
+      if (!(otherJob is JobOpening))
+      {
+        return false;
+      }
+      else
+      {
+        JobOpening newJob = (JobOpening)otherJob;
+        bool titleEquality = (this.Title == newJob.Title);
+        bool descriptionEquality = (this.Description == newJob.Description);
+        bool contactEquality = (this.Contact == newJob.Contact);
+        return (titleEquality && descriptionEquality && contactEquality);
+      }
+    }
   }
 }
