@@ -1,5 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using MySql.Data.MySqlClient;
+using JobBoard.Models;
+using System.Collections.Generic;
 
 namespace JobBoard.Controllers
 {
