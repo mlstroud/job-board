@@ -1,3 +1,24 @@
 @{
   Layout = "_Layout";
 }
+
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <div class="panel-title">
+      <strong>Add</strong>
+    </div>
+  </div>
+  <div class="panel-body">
+    <form action="/jobs" method="post">
+    <label for="title">Job Title</label>
+    <input id="title" name="title" type="text" class="form-control">
+    <label for="description">Description</label>
+    <textarea id="description" name="description" class="form-control">
+    </textarea>
+    <label for="contact">Contact Email</label>
+    <input id="contact" name="contact" type="text" class="form-control">
+    <br>
+    <button type="submit" class="btn btn-primary">Add Job</button>
+    </form>
+  </div>
+</div>
