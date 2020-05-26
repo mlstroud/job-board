@@ -9,5 +9,11 @@ namespace JobBoard.Controllers
     {
       return View();
     }
+
+    [HttpGet("/jobs/new")]
+    public ActionResult New()
+    {
+      return View();
+    }
   }
 }
